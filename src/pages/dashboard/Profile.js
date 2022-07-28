@@ -3,6 +3,7 @@ import { FormRow } from '../../components';
 import Wrapper from '../../assets/wrappers/DashboardFormPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import { updateUser } from '../../features/user/userSlice';
 
 
 const Profile = () => {
@@ -22,6 +23,8 @@ const handleSubmit = (e) =>{
       toast.error('Please Fill Out All Fields');
       return;
     }
+
+  dispatch(updateUser(userData))
 };
 
 const handleChange = (e) =>{
@@ -34,7 +37,7 @@ const { name, email, lastName, location } = userData;
 
   return (
     <Wrapper>
-      <form className='form' onSubmit={ handleChange }>
+      <form className='form' onSubmit={ handleSubmit }>
         <h3>Profile</h3>
         <div className='form-center'>
           <FormRow type='text' name='name' value={name} handleChange={handleChange} />
