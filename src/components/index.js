@@ -8,5 +8,8 @@ import Logo from "./Logo";
 import Navbar from "./Navbar";
 import SearchContainer from "./SearchContainer";
 import SmallSidebar from "./SmallSidebar";
+import StatsContainer from "./StatsContainer";
+import ChartsContainer from "./ChartsContainer"
 
-export { Logo, FormRow, Navbar, SmallSidebar, BigSidebar, FormRowSelect, Job, JobsContainer, SearchContainer, Loading }
+
+export { StatsContainer,ChartsContainer, Logo, FormRow, Navbar, SmallSidebar, BigSidebar, FormRowSelect, Job, JobsContainer, SearchContainer, Loading }
