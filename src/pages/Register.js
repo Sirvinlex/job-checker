@@ -71,7 +71,7 @@ useEffect(() => {
           {isLoading? 'Loading...' : 'Submit'}
         </button>
 
-        <button
+        {/* <button
           type='button'
           className='btn btn-block btn-hipster'
           disabled={isLoading}
@@ -80,7 +80,7 @@ useEffect(() => {
           }}
         >
           {isLoading ? 'loading...' : 'demo'}
-        </button>
+        </button> */}
 
         <p>
           {values.isMember ? 'Not a member yet?' : 'Already a member?'}

@@ -1,8 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
-import customFetch from '../../utils/axios';
 import { getUserFromLocalStorage, addUserToLocalStorage, removeUserFromLocalStorage } from '../../utils/localStorage';
-import {  } from '../../utils/localStorage';
+import { loginUserThunk, registerUserThunk, updateUserThunk, clearStoreThunk} from './userThunk';
 
 const initialState = {
   isLoading: false,
@@ -10,49 +9,13 @@ const initialState = {
   user: getUserFromLocalStorage(),
 };
 
-export const registerUser = createAsyncThunk(
-  'user/registerUser',
-  async (user, thunkAPI) => {
-    try {
-        const resp = await customFetch.post('/auth/register', user)
-        return resp.data
-    } catch (error) {
-       return  thunkAPI.rejectWithValue(error.response.data.msg);
-        
-    }
-  }
-);
+export const registerUser = createAsyncThunk('user/registerUser', registerUserThunk);
 
-export const loginUser = createAsyncThunk(
-  'user/loginUser',
-  async (user, thunkAPI) => {
-    try {
-        const resp = await customFetch.post('/auth/login', user)
-        return resp.data
-    } catch (error) {
-       return  thunkAPI.rejectWithValue(error.response.data.msg);
-        
-    }
-  }
-);
+export const loginUser = createAsyncThunk('user/loginUser', loginUserThunk);
 
-export const updateUser = createAsyncThunk(
-  'user/updateUser',
-  async (user, thunkAPI) => {
-    try {
-      const resp = await customFetch.patch('/auth/updateUser', user);
-      return resp.data;
-    } catch (error) {
-      if(error.response.status === 401){
-        thunkAPI.dispatch(logoutUser());
-        return thunkAPI.rejectWithValue('Unauthorized! Logging Out...')
-      }
-      return thunkAPI.rejectWithValue(error.response.data.msg);
-    }
-  }
-);
+export const updateUser = createAsyncThunk('user/updateUser', updateUserThunk);
 
-
+export const clearStore = createAsyncThunk('user/clearStore', clearStoreThunk)
 const userSlice = createSlice({
   name: 'user',
   initialState,
@@ -116,6 +79,9 @@ const userSlice = createSlice({
       state.isLoading = false;
       toast.error(payload);
     },
+    [clearStore.rejected]: () =>{
+      toast.error('There was an error');
+    }
   }
 });
 
