@@ -37,7 +37,7 @@ const Wrapper = styled.section`
     }
     .btn-block {
       margin-top: 0;
-    }
+    } 
   }
 `
 

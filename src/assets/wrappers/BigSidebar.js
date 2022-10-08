@@ -12,14 +12,14 @@ const Wrapper = styled.aside`
       width: 250px;
       margin-left: -250px;
       transition: var(--transition);
-    }
+    } 
     .content {
       position: sticky;
       top: 0;
     }
     .show-sidebar {
       margin-left: 0;
-    }
+    } 
     header {
       height: 6rem;
       display: flex;

@@ -69,7 +69,7 @@ const Wrapper = styled.article`
     @media (min-width: 1120px) {
       grid-template-columns: 1fr 1fr;
     }
-  }
+  } 
 
   .status {
     border-radius: var(--borderRadius);

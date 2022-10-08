@@ -37,4 +37,4 @@ const Wrapper = styled.main`
     }
   }
 `
-export default Wrapper
+export default Wrapper 
